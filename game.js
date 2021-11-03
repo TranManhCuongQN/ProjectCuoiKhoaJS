@@ -76,6 +76,9 @@ function drawBricks() {
         if (!b.isBroken) {
             context.beginPath();
             context.rect(b.x, b.y, BrickConfig.width, BrickConfig.height);
+            console.log(b);
+            console.log(b.x);
+            console.log(b.y);
             context.fill();
             context.closePath();
         }
@@ -181,7 +184,6 @@ function handleBallCollideBricks() {
                     canvas.innerHTML = '<audio autoplay src="./audio/Win.mp3"></audio>';
                     drawNotificationWin();
                     canvas.pause();
-
                 }
             }
         }
