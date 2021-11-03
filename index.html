@@ -81,28 +81,13 @@
         right: 465px;
         cursor: pointer;
     }
-
-    .canvas-holder {
-        position: relative;
-    }
-
-    .overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .d-none {
-        display: none;
-    }
 </style>
 
 <body>
     <div class="container">
         <div class="canvas-holder">
-            <canvas id="game" width="800" height="600"></canvas>
-            <div class="overlay d-none" id='win'>Text</div>
+            <canvas id="game" width="800" height="600">
+            </canvas>
         </div>
 
         <div class="sidebar">

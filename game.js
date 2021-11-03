@@ -81,7 +81,7 @@ function drawBricks() {
         }
     })
 }
-function drawHinhChuNhat() {
+function drawRectangular() {
     context.beginPath();
     context.rect(250, 100, 285, 350);
     context.fillStyle = '#99cccc';
@@ -90,12 +90,12 @@ function drawHinhChuNhat() {
 }
 
 
-function drawNotification() {
-    drawHinhChuNhat();
+function drawNotificationOver() {
+    drawRectangular();
     context.beginPath();
     context.fillStyle = 'red';
     context.font = '25px serif';
-    context.fillText("GAME OVER!", 310, 220);
+    context.fillText("GAME OVER!", 320, 220);
     context.fill();
     context.closePath();
     context.beginPath();
@@ -117,6 +117,37 @@ function drawNotification() {
     context.fill();
     context.closePath();
 }
+
+
+function drawNotificationWin() {
+    drawRectangular();
+    context.beginPath();
+    context.fillStyle = 'yellow';
+    context.font = '25px serif';
+    context.fillText("YOU WIN", 340, 220);
+    context.fill();
+    context.closePath();
+    context.beginPath();
+    context.fillStyle = 'black';
+    context.font = '20px serif';
+    context.fillText("Xin chúc mừng bạn là", 305, 260);
+    context.fill();
+    context.closePath();
+    context.beginPath();
+    context.fillStyle = 'black';
+    context.font = '15px serif';
+    context.fillText("người chiến thắng", 330, 300);
+    context.fill();
+    context.closePath();
+    context.closePath();
+    context.beginPath();
+    context.fillStyle = 'White';
+    context.font = '15px serif';
+    context.fillText("Nhấn click để tiếp tục trò chơi", 300, 420);
+    context.fill();
+    context.closePath();
+}
+
 
 function handleBallCollideBounds() {
     if (ball.x < ball.radius || ball.x > canvas.width - ball.radius) {
@@ -146,7 +177,11 @@ function handleBallCollideBricks() {
                 userScore += 1;
                 score.innerHTML = "<p>Điểm hiện tại:</p>" + userScore;
                 if (userScore == scoreMax) {
-                    alert("YOU WiN")
+                    music.pause();
+                    canvas.innerHTML = '<audio autoplay src="./audio/Win.mp3"></audio>';
+                    drawNotificationWin();
+                    canvas.pause();
+
                 }
             }
         }
@@ -195,7 +230,7 @@ function draw() {
     else {
         music.pause();
         canvas.innerHTML = '<audio autoplay src="./audio/Mario.mp3"></audio>';
-        drawNotification();
+        drawNotificationOver();
     }
 
 }
